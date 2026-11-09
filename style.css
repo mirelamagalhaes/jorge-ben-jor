@@ -1,0 +1,752 @@
+
+:root {
+    --orange: #ed653c;
+    --red: #a93229;
+    --yellow: #f5c94d;
+    --cream: #fff0d5;
+    --green: #354b32;
+    --dark: #251e1b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--cream);
+    color: var(--dark);
+    font-family: 'DM Sans', sans-serif;
+    padding-bottom: 95px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+/* MENU */
+
+.header {
+    height: 80px;
+    padding: 0 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--cream);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #d9c6a5;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 22px;
+}
+
+.logo span {
+    color: var(--orange);
+    margin-left: 5px;
+}
+
+.header nav {
+    display: flex;
+    gap: 30px;
+}
+
+.header nav a {
+    font-size: 13px;
+    font-weight: 700;
+    transition: .3s;
+}
+
+.header nav a:hover {
+    color: var(--orange);
+}
+
+.menu-toggle {
+    display: none;
+    border: none;
+    background: transparent;
+    font-size: 27px;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 650px;
+    padding: 100px 10%;
+    background:
+        radial-gradient(circle at 80% 20%, #f5c94d 0 12%, transparent 12.5%),
+        linear-gradient(125deg, var(--orange), #c84932);
+    color: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 600px;
+    z-index: 2;
+}
+
+.eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(65px, 10vw, 125px);
+    line-height: .85;
+    letter-spacing: -5px;
+}
+
+.hero h1 span {
+    color: var(--yellow);
+}
+
+.hero-content p {
+    max-width: 430px;
+    line-height: 1.8;
+    margin: 30px 0;
+    font-size: 15px;
+}
+
+.main-button {
+    display: inline-block;
+    padding: 17px 25px;
+    background: var(--yellow);
+    color: var(--dark);
+    font-size: 12px;
+    font-weight: 900;
+    border-radius: 3px;
+    transition: .3s;
+}
+
+.main-button:hover {
+    transform: translateY(-5px);
+    background: var(--cream);
+}
+
+/* VINIL */
+
+.hero-art {
+    width: 350px;
+    height: 350px;
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.sun {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: var(--yellow);
+    opacity: .8;
+}
+
+.vinyl {
+    width: 270px;
+    height: 270px;
+    border-radius: 50%;
+    background: repeating-radial-gradient(
+        circle,
+        #201b19 0px,
+        #201b19 3px,
+        #39302b 4px,
+        #201b19 6px
+    );
+    border: 8px solid #28201b;
+    position: relative;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 20px 45px #50251c80;
+    animation: spin 9s linear infinite;
+}
+
+.vinyl-center {
+    width: 90px;
+    height: 90px;
+    background: var(--orange);
+    color: var(--cream);
+    border: 6px solid var(--yellow);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+}
+
+.art-caption {
+    position: absolute;
+    bottom: -5px;
+    right: 0;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+.hero-bottom {
+    position: absolute;
+    bottom: 25px;
+    left: 10%;
+    font-size: 10px;
+    letter-spacing: 4px;
+    font-weight: 700;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* FRASE */
+
+.quote {
+    background: var(--green);
+    color: var(--cream);
+    text-align: center;
+    padding: 75px 20px;
+}
+
+.quote span {
+    color: var(--yellow);
+    font-size: 35px;
+}
+
+.quote h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(27px, 5vw, 48px);
+    margin: 15px 0;
+}
+
+.quote p {
+    color: #d7d2bb;
+    font-size: 14px;
+}
+
+/* SEÇÕES */
+
+.section {
+    padding: 100px 9%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.section-heading .eyebrow {
+    color: var(--orange);
+}
+
+.section-heading h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(35px, 5vw, 58px);
+}
+
+.section-heading p {
+    margin-top: 12px;
+    color: #746b60;
+}
+
+/* MÚSICAS */
+
+.music-section {
+    background: var(--cream);
+}
+
+.music-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.music-card {
+    background: #fff8e9;
+    padding: 20px;
+    border: 1px solid #e7d8bc;
+    transition: .3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.music-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px #3b27151c;
+}
+
+.album-art {
+    height: 170px;
+    margin-bottom: 20px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.album-art::before {
+    content: "♫";
+    font-family: serif;
+    font-size: 100px;
+    color: #ffffff55;
+    position: absolute;
+    transform: rotate(-15deg);
+}
+
+.album-art span {
+    z-index: 1;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 22px;
+    color: white;
+    text-align: center;
+    padding: 12px;
+}
+
+.music-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    min-height: 48px;
+}
+
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.card-actions button {
+    border: none;
+    padding: 10px 13px;
+    background: var(--orange);
+    color: white;
+    border-radius: 30px;
+    transition: .2s;
+}
+
+.card-actions button:hover {
+    background: var(--red);
+    transform: scale(1.08);
+}
+
+.card-actions .favorite {
+    background: transparent;
+    color: var(--red);
+    font-size: 23px;
+}
+
+.card-actions .favorite.active {
+    color: var(--orange);
+}
+
+/* FAVORITOS */
+
+.favorites-area {
+    margin-top: 70px;
+    padding: 30px;
+    background: #f7e4c4;
+    border-left: 5px solid var(--orange);
+}
+
+.favorites-area h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+#favoritesList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 13px;
+}
+
+.favorite-item {
+    background: white;
+    padding: 12px 15px;
+    border-radius: 3px;
+}
+
+/* HISTÓRIA */
+
+.history-section {
+    background: #f1d9ad;
+}
+
+.timeline {
+    max-width: 750px;
+    margin: auto;
+    border-left: 3px solid var(--orange);
+    padding-left: 35px;
+}
+
+.timeline-item {
+    position: relative;
+    padding: 0 0 45px;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -44px;
+    top: 5px;
+    width: 15px;
+    height: 15px;
+    background: var(--orange);
+    border: 4px solid var(--cream);
+    border-radius: 50%;
+}
+
+.timeline-item > span {
+    font-size: 12px;
+    font-weight: 900;
+    color: var(--red);
+    letter-spacing: 2px;
+}
+
+.timeline-item h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    margin: 8px 0;
+}
+
+.timeline-item p {
+    color: #665c4e;
+    line-height: 1.7;
+}
+
+/* UNIVERSO */
+
+.universe-section {
+    background: var(--green);
+    color: var(--cream);
+}
+
+.universe-section .section-heading p {
+    color: #ddd2b8;
+}
+
+.universe-section .section-heading .eyebrow {
+    color: var(--yellow);
+}
+
+.visual-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.visual-card {
+    min-height: 280px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: .4s;
+    position: relative;
+    overflow: hidden;
+}
+
+.visual-card:hover {
+    transform: translateY(-10px) rotate(-1deg);
+}
+
+.visual-card span {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.visual-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 35px;
+}
+
+.visual-card p {
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+.visual-one {
+    background: var(--orange);
+}
+
+.visual-two {
+    background: #b18a43;
+}
+
+.visual-three {
+    background: #744b42;
+}
+
+/* RODAPÉ */
+
+footer {
+    background: var(--dark);
+    color: var(--cream);
+    text-align: center;
+    padding: 65px 20px 100px;
+}
+
+.footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 35px;
+    font-weight: 900;
+}
+
+footer p {
+    margin: 15px 0;
+    color: #d8c6aa;
+}
+
+footer span {
+    font-size: 11px;
+    color: #a99a86;
+}
+
+footer a {
+    display: block;
+    margin-top: 25px;
+    font-size: 11px;
+    color: var(--yellow);
+    font-weight: bold;
+}
+
+/* PLAYER */
+
+.player {
+    position: fixed;
+    z-index: 200;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    min-height: 85px;
+    background: #241d19;
+    color: white;
+    padding: 12px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    box-shadow: 0 -5px 20px #0002;
+}
+
+.player-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.player-info strong {
+    display: block;
+    font-size: 13px;
+}
+
+.player-info small {
+    color: #c6ae8f;
+    font-size: 11px;
+}
+
+.mini-vinyl {
+    width: 47px;
+    height: 47px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: repeating-radial-gradient(circle, #39302a 0 2px, #171311 3px 5px);
+    border: 2px solid #d18d46;
+    display: grid;
+    place-items: center;
+    color: var(--yellow);
+}
+
+.mini-vinyl.spinning {
+    animation: spin 3s linear infinite;
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.player-controls button {
+    color: white;
+    background: none;
+    border: none;
+    font-size: 16px;
+}
+
+.player-controls .play-button {
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    background: var(--orange);
+    font-size: 16px;
+}
+
+.listen-link {
+    color: var(--yellow);
+    font-size: 11px;
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+#topBtn {
+    position: fixed;
+    right: 22px;
+    bottom: 105px;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background: var(--orange);
+    color: white;
+    font-size: 22px;
+    display: none;
+    z-index: 150;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 900px) {
+    .music-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-art {
+        transform: scale(.8);
+    }
+}
+
+@media (max-width: 650px) {
+    .header {
+        height: 70px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .header nav {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--cream);
+        padding: 25px;
+        flex-direction: column;
+        gap: 20px;
+        border-bottom: 1px solid #d9c6a5;
+    }
+
+    .header nav.open {
+        display: flex;
+    }
+
+    .hero {
+        min-height: 720px;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 70px 8%;
+    }
+
+    .hero h1 {
+        font-size: 72px;
+    }
+
+    .hero-art {
+        align-self: center;
+        transform: scale(.7);
+        margin-top: -10px;
+        margin-bottom: -35px;
+    }
+
+    .hero-bottom {
+        left: 8%;
+        font-size: 8px;
+    }
+
+    .section {
+        padding: 75px 7%;
+    }
+
+    .music-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .music-card {
+        padding: 12px;
+    }
+
+    .album-art {
+        height: 125px;
+    }
+
+    .album-art span {
+        font-size: 16px;
+    }
+
+    .music-card h3 {
+        font-size: 15px;
+    }
+
+    .visual-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .player {
+        padding: 10px 12px;
+        gap: 8px;
+    }
+
+    .player-info {
+        flex: 1;
+    }
+
+    .player-info strong {
+        max-width: 115px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .player-controls {
+        gap: 10px;
+    }
+
+    .listen-link {
+        font-size: 9px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}

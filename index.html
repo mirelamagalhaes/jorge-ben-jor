@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ed653c">
+    <title>Jorge Ben Jor | Universo Cigana</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header class="header">
+    <a href="#inicio" class="logo">JORGE<span>BEN JOR</span></a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+        ☰
+    </button>
+
+    <nav id="nav">
+        <a href="#inicio">Início</a>
+        <a href="#musicas">Músicas</a>
+        <a href="#historia">História</a>
+        <a href="#galeria">Universo</a>
+    </nav>
+</header>
+
+<main>
+    <!-- INÍCIO -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <span class="eyebrow">UM TRIBUTO À MÚSICA BRASILEIRA</span>
+
+            <h1>JORGE<br><span>BEN JOR</span></h1>
+
+            <p>Uma viagem pelo ritmo, pela poesia e pela magia de um dos maiores nomes da música brasileira.</p>
+
+            <a href="#musicas" class="main-button">EXPLORAR MÚSICAS ↓</a>
+        </div>
+
+        <div class="hero-art">
+            <div class="sun"></div>
+            <div class="vinyl">
+                <div class="vinyl-center">JB</div>
+            </div>
+            <span class="art-caption">O SOM DO BRASIL</span>
+        </div>
+
+        <div class="hero-bottom">SAMBA • SOUL • ROCK • BRASIL</div>
+    </section>
+
+    <!-- FRASE -->
+    <section class="quote">
+        <span>✳</span>
+        <h2>O ritmo que atravessa gerações.</h2>
+        <p>Uma celebração à criatividade e à musicalidade de Jorge Ben Jor.</p>
+    </section>
+
+    <!-- MÚSICAS -->
+    <section class="music-section section" id="musicas">
+        <div class="section-heading">
+            <span class="eyebrow">APERTE O PLAY</span>
+            <h2>A trilha sonora</h2>
+            <p>Escolha sua música e entre nesse universo.</p>
+        </div>
+
+        <div class="music-grid" id="musicGrid"></div>
+
+        <div class="favorites-area">
+            <h3>♥ Suas favoritas</h3>
+            <div id="favoritesList">
+                <p>Você ainda não adicionou músicas aos favoritos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HISTÓRIA -->
+    <section class="history-section section" id="historia">
+        <div class="section-heading">
+            <span class="eyebrow">UMA TRAJETÓRIA MUSICAL</span>
+            <h2>Uma história de ritmo</h2>
+            <p>Conheça alguns momentos da trajetória do artista.</p>
+        </div>
+
+        <div class="timeline">
+            <article class="timeline-item">
+                <span>1942</span>
+                <div>
+                    <h3>O começo</h3>
+                    <p>Jorge Duílio Lima Meneses nasce no Rio de Janeiro, em 22 de março.</p>
+                </div>
+            </article>
+
+            <article class="timeline-item">
+                <span>1963</span>
+                <div>
+                    <h3>Mas, Que Nada!</h3>
+                    <p>O artista ganha destaque nacional com um dos grandes clássicos da música brasileira.</p>
+                </div>
+            </article>
+
+            <article class="timeline-item">
+                <span>Anos 70</span>
+                <div>
+                    <h3>Uma identidade única</h3>
+                    <p>Sua mistura de samba, rock, funk e soul conquista diferentes gerações.</p>
+                </div>
+            </article>
+
+            <article class="timeline-item">
+                <span>Legado</span>
+                <div>
+                    <h3>Uma influência mundial</h3>
+                    <p>Sua obra continua inspirando músicos e apaixonados por música no Brasil e no mundo.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- UNIVERSO VISUAL -->
+    <section class="universe-section section" id="galeria">
+        <div class="section-heading">
+            <span class="eyebrow">CORES, SONS E CULTURA</span>
+            <h2>O universo Cigana</h2>
+            <p>Uma experiência visual inspirada na estética musical retrô e tropical.</p>
+        </div>
+
+        <div class="visual-grid">
+            <div class="visual-card visual-one">
+                <span>01</span>
+                <h3>RITMO</h3>
+                <p>A batida brasileira.</p>
+            </div>
+
+            <div class="visual-card visual-two">
+                <span>02</span>
+                <h3>POESIA</h3>
+                <p>Melodias que contam histórias.</p>
+            </div>
+
+            <div class="visual-card visual-three">
+                <span>03</span>
+                <h3>LIBERDADE</h3>
+                <p>Uma música sem fronteiras.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <div class="footer-logo">JORGE BEN JOR</div>
+        <p>Uma homenagem à música brasileira.</p>
+        <span>Projeto cultural independente • 2026</span>
+        <a href="#inicio">VOLTAR AO TOPO ↑</a>
+    </footer>
+</main>
+
+<!-- PLAYER -->
+<div class="player" id="player">
+    <div class="player-info">
+        <div class="mini-vinyl" id="miniVinyl">♫</div>
+        <div>
+            <strong id="currentTitle">Escolha uma música</strong>
+            <small>Jorge Ben Jor</small>
+        </div>
+    </div>
+
+    <div class="player-controls">
+        <button id="prevBtn" aria-label="Música anterior">|◀</button>
+        <button id="playBtn" class="play-button" aria-label="Ouvir música">▶</button>
+        <button id="nextBtn" aria-label="Próxima música">▶|</button>
+    </div>
+
+    <a href="#" id="listenLink" target="_blank" rel="noopener noreferrer" class="listen-link">
+        OUVIR ↗
+    </a>
+</div>
+
+<button id="topBtn" aria-label="Voltar ao topo">↑</button>
+
+<script src="script.js"></script>
+</body>
+</html>
