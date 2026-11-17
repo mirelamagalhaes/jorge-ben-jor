@@ -1,423 +1,549 @@
 
-const songs = [
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => [...document.querySelectorAll(s)];
+
+// MENU PARA CELULAR
+$("#menuBtn").addEventListener("click", () => {
+  $("#menu").classList.toggle("open");
+});
+
+$$("nav a").forEach(link => {
+  link.addEventListener("click", () => {
+    $("#menu").classList.remove("open");
+  });
+});
+
+// ÁLBUNS: busca capas no catálogo da Apple Music/iTunes
+const albums = [
   {
-    title: "Cigana",
-    sub: "A identidade do universo",
-    theme: {
-      bg: "#f6e8d2",
-      paper: "#fff8ed",
-      accent: "#ed653c",
-      dark: "#a93229",
-      soft: "#f3b27f"
-    }
+    name: "A Tábua de Esmeralda",
+    year: "1974",
+    color: "#536c42",
+    description: "Um dos discos mais celebrados da discografia de Jorge Ben.",
+    track: "Os Alquimistas Estão Chegando"
   },
   {
-    title: "Jorge da Capadócia",
-    sub: "Força e espiritualidade",
-    theme: {
-      bg: "#e6e8d9",
-      paper: "#f8f8ee",
-      accent: "#536c42",
-      dark: "#354b32",
-      soft: "#a9b58a"
-    }
+    name: "África Brasil",
+    year: "1976",
+    color: "#a93229",
+    description: "Um marco musical com samba, funk e referências afro-brasileiras.",
+    track: "Ponta de Lança Africano"
   },
   {
-    title: "Domingas",
-    sub: "Calor e delicadeza",
-    theme: {
-      bg: "#f0e2c8",
-      paper: "#fff7e7",
-      accent: "#bd8845",
-      dark: "#80542c",
-      soft: "#e3bd7d"
-    }
+    name: "Força Bruta",
+    year: "1970",
+    color: "#bd8845",
+    description: "Um disco cheio de balanço e canções inesquecíveis.",
+    track: "Oba, Lá Vem Ela"
   },
   {
-    title: "Oba, Lá Vem Ela",
-    sub: "Energia e movimento",
-    theme: {
-      bg: "#f2ded6",
-      paper: "#fff4ed",
-      accent: "#b83d32",
-      dark: "#812820",
-      soft: "#e58b70"
-    }
+    name: "Samba Esquema Novo",
+    year: "1963",
+    color: "#ed653c",
+    description: "O álbum de estreia de Jorge Ben.",
+    track: "Mas, Que Nada!"
   },
   {
-    title: "Me Chamando de Paixão",
-    sub: "Romance em tons dourados",
-    theme: {
-      bg: "#f3e7d6",
-      paper: "#fff9ef",
-      accent: "#c58b50",
-      dark: "#8b592e",
-      soft: "#e8c18a"
-    }
+    name: "Negro é Lindo",
+    year: "1971",
+    color: "#71844b",
+    description: "Um título marcante na discografia do artista.",
+    track: "Negro é Lindo"
   },
   {
-    title: "Amante Amado",
-    sub: "Um clima intenso",
-    theme: {
-      bg: "#e9ded8",
-      paper: "#f9f0eb",
-      accent: "#754b42",
-      dark: "#4b302c",
-      soft: "#b98a7d"
-    }
-  },
-  {
-    title: "Por Causa de Você, Menina",
-    sub: "Leveza e frescor",
-    theme: {
-      bg: "#e8eadc",
-      paper: "#f8f9ef",
-      accent: "#71844b",
-      dark: "#46562d",
-      soft: "#b8c58d"
-    }
-  },
-  {
-    title: "Moça",
-    sub: "Doçura em movimento",
-    theme: {
-      bg: "#f2e1d9",
-      paper: "#fff7f1",
-      accent: "#cf674c",
-      dark: "#93402e",
-      soft: "#eda58d"
-    }
+    name: "Solta o Pavão",
+    year: "1975",
+    color: "#c58b50",
+    description: "Mais um capítulo importante da trajetória musical.",
+    track: "Jorge da Capadócia"
   }
 ];
 
-const questions = [
-  {
-    q: "Qual é o nome de nascimento de Jorge Ben Jor?",
-    a: [
-      "Jorge Duílio Lima Menezes",
-      "Jorge Augusto Ben Lima",
-      "Jorge Carlos Menezes Silva",
-      "Jorge Ben de Oliveira"
-    ],
-    c: 0,
-    e: "Seu nome de nascimento é Jorge Duílio Lima Menezes."
-  },
-  {
-    q: "Qual álbum de 1963 apresentou Jorge Ben ao grande público?",
-    a: [
-      "África Brasil",
-      "Samba Esquema Novo",
-      "A Tábua de Esmeralda",
-      "Força Bruta"
-    ],
-    c: 1,
-    e: "Samba Esquema Novo foi lançado em 1963."
-  },
-  {
-    q: "Qual destas músicas é um grande sucesso do início da carreira?",
-    a: [
-      "Mas Que Nada",
-      "W/Brasil",
-      "Xica da Silva",
-      "Fio Maravilha"
-    ],
-    c: 0,
-    e: "Mas Que Nada foi um dos primeiros grandes sucessos de Jorge Ben."
-  },
-  {
-    q: "Em que ano foi lançado o álbum África Brasil?",
-    a: ["1963", "1969", "1976", "1989"],
-    c: 2,
-    e: "África Brasil foi lançado em 1976."
-  },
-  {
-    q: "Qual destas músicas está associada ao álbum África Brasil?",
-    a: [
-      "Taj Mahal",
-      "Chove Chuva",
-      "Que Pena",
-      "Cadê Teresa"
-    ],
-    c: 0,
-    e: "Taj Mahal é uma faixa conhecida de África Brasil."
-  },
-  {
-    q: "Qual mistura de estilos descreve a sonoridade de Jorge Ben Jor?",
-    a: [
-      "Samba, rock e funk",
-      "Ópera, polca e valsa",
-      "Country, bluegrass e folk",
-      "Reggae, country e tango"
-    ],
-    c: 0,
-    e: "Sua música mistura elementos de samba, rock, funk e outras influências."
-  },
-  {
-    q: "Em qual cidade brasileira Jorge Ben Jor nasceu?",
-    a: [
-      "Salvador",
-      "Recife",
-      "Rio de Janeiro",
-      "Belo Horizonte"
-    ],
-    c: 2,
-    e: "Jorge Ben Jor nasceu no Rio de Janeiro."
-  },
-  {
-    q: "Qual instrumento é especialmente associado à sua música?",
-    a: [
-      "Violão",
-      "Harpa",
-      "Acordeão",
-      "Bandolim"
-    ],
-    c: 0,
-    e: "Jorge Ben é conhecido por seu jeito marcante de tocar violão."
-  }
-];
+async function loadAlbums() {
+  const grid = $("#albumGrid");
+  grid.innerHTML = "";
 
-const $ = id => document.getElementById(id);
-
-let selected = 0;
-let favorites = readFavorites();
-let qi = 0;
-let score = 0;
-let answered = false;
-
-function readFavorites() {
-  try {
-    const value = JSON.parse(
-      localStorage.getItem("universoCiganaFavorites") || "[]"
-    );
-
-    return Array.isArray(value)
-      ? value.filter(n =>
-          Number.isInteger(n) && n >= 0 && n < songs.length
-        )
-      : [];
-  } catch {
-    return [];
-  }
-}
-
-function theme(t) {
-  const root = document.documentElement;
-
-  root.style.setProperty("--bg", t.bg);
-  root.style.setProperty("--paper", t.paper);
-  root.style.setProperty("--accent", t.accent);
-  root.style.setProperty("--dark", t.dark);
-  root.style.setProperty("--soft", t.soft);
-
-  document.querySelector('meta[name="theme-color"]').content = t.accent;
-}
-
-function chooseSong(i) {
-  selected = i;
-  theme(songs[i].theme);
-
-  $("currentTitle").textContent = songs[i].title;
-  $("miniTitle").textContent = songs[i].title;
-
-  renderSongs();
-}
-
-function renderSongs() {
-  $("musicGrid").innerHTML = "";
-
-  songs.forEach((song, i) => {
-    const card = document.createElement("div");
-
-    card.className =
-      "music-card" + (selected === i ? " selected" : "");
-
+  for (const album of albums) {
+    const card = document.createElement("button");
+    card.className = "album-card";
     card.innerHTML = `
-      <span class="card-no">FAIXA ${String(i + 1).padStart(2, "0")}</span>
-      <div class="card-art" style="--card:${song.theme.accent}"></div>
-      <span class="card-title"></span>
-      <span class="card-sub"></span>
-      <button class="heart" type="button"></button>
+      <img alt="Capa de ${album.name}" loading="lazy">
+      <b>${album.name}</b>
+      <small>${album.year}</small>
     `;
 
-    card.querySelector(".card-title").textContent = song.title;
-    card.querySelector(".card-sub").textContent = song.sub;
+    const image = card.querySelector("img");
 
-    const heart = card.querySelector(".heart");
+    try {
+      const query = encodeURIComponent(
+        `Jorge Ben Jor ${album.name}`
+      );
 
-    heart.textContent = favorites.includes(i) ? "♥" : "♡";
+      const response = await fetch(
+        `https://itunes.apple.com/search?term=${query}&entity=album&limit=20&country=BR`
+      );
 
-    heart.setAttribute(
-      "aria-label",
-      favorites.includes(i)
-        ? "Remover das favoritas"
-        : "Adicionar às favoritas"
-    );
+      const data = await response.json();
 
-    card.addEventListener("click", () => chooseSong(i));
+      const result = data.results.find(item =>
+        item.collectionName?.toLowerCase().includes(
+          album.name.toLowerCase()
+        )
+      ) || data.results[0];
 
-    heart.addEventListener("click", event => {
-      event.stopPropagation();
-
-      favorites = favorites.includes(i)
-        ? favorites.filter(x => x !== i)
-        : [...favorites, i];
-
-      try {
-        localStorage.setItem(
-          "universoCiganaFavorites",
-          JSON.stringify(favorites)
+      if (result?.artworkUrl100) {
+        image.src = result.artworkUrl100.replace(
+          "100x100bb",
+          "600x600bb"
         );
-      } catch {}
+      } else {
+        image.alt = `Imagem não encontrada: ${album.name}`;
+      }
 
-      renderSongs();
+    } catch (error) {
+      image.alt = `Não foi possível carregar a capa de ${album.name}`;
+    }
+
+    card.addEventListener("click", () => {
+      $$(".album-card").forEach(c =>
+        c.classList.remove("active")
+      );
+
+      card.classList.add("active");
+
+      $("#albumTitle").textContent = album.name;
+      $("#albumYear").textContent = album.year;
+      $("#albumDescription").textContent =
+        album.description + " Faixa para conhecer: " + album.track;
+
+      $("#albumLink").href =
+        `https://open.spotify.com/search/${encodeURIComponent(
+          "Jorge Ben Jor " + album.name
+        )}`;
+
+      $("#albumImage").src = image.src;
+      document.documentElement.style.setProperty(
+        "--accent",
+        album.color
+      );
     });
 
-    $("musicGrid").appendChild(card);
-  });
+    grid.appendChild(card);
+  }
+}
 
-  $("favoritesList").innerHTML = "";
-  $("favoritesEmpty").hidden = favorites.length > 0;
+loadAlbums();
 
-  favorites.forEach(i => {
+// MÚSICAS
+const songs = [
+  {name:"Mas, Que Nada!",album:"Samba Esquema Novo",color:"#ed653c"},
+  {name:"Chove Chuva",album:"Samba Esquema Novo",color:"#d88b43"},
+  {name:"País Tropical",album:"Jorge Ben",color:"#c58b50"},
+  {name:"Que Pena",album:"Jorge Ben",color:"#a93229"},
+  {name:"Oba, Lá Vem Ela",album:"Força Bruta",color:"#bd8845"},
+  {name:"O Telefone Tocou Novamente",album:"Força Bruta",color:"#754b42"},
+  {name:"Fio Maravilha",album:"Ben",color:"#cf674c"},
+  {name:"Os Alquimistas Estão Chegando",album:"A Tábua de Esmeralda",color:"#536c42"},
+  {name:"Jorge da Capadócia",album:"Solta o Pavão",color:"#71844b"},
+  {name:"Taj Mahal",album:"África Brasil",color:"#a93229"},
+  {name:"Xica da Silva",album:"África Brasil",color:"#bd8845"},
+  {name:"Amante Amado",album:"A Banda do Zé Pretinho",color:"#754b42"}
+];
+
+let selectedSong = null;
+let favorites = JSON.parse(
+  localStorage.getItem("benjorFavorites") || "[]"
+);
+
+function renderSongs() {
+  $("#musicList").innerHTML = "";
+
+  songs.forEach((song, index) => {
     const button = document.createElement("button");
+    button.className = "music-row";
 
-    button.className = "favorite-chip";
-    button.textContent = "♥ " + songs[i].title;
+    button.innerHTML = `
+      <span>
+        <b>${String(index + 1).padStart(2, "0")}</b>
+        &nbsp; ${song.name}
+        <br><small>${song.album}</small>
+      </span>
+      <span>▶</span>
+    `;
 
-    button.addEventListener("click", () => chooseSong(i));
+    button.addEventListener("click", () => {
+      selectSong(index);
+    });
 
-    $("favoritesList").appendChild(button);
+    $("#musicList").appendChild(button);
   });
 }
 
-$("listenButton").addEventListener("click", () => {
-  const url =
-    "https://www.youtube.com/results?search_query=" +
-    encodeURIComponent("Jorge Ben Jor " + songs[selected].title);
+function renderFavorites() {
+  $("#favoritesList").innerHTML = "";
 
-  window.open(url, "_blank", "noopener,noreferrer");
-});
-
-$("menuToggle").addEventListener("click", () => {
-  const open = $("nav").classList.toggle("open");
-
-  $("menuToggle").setAttribute("aria-expanded", String(open));
-  $("menuToggle").textContent = open ? "×" : "☰";
-});
-
-$("nav").querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => {
-    $("nav").classList.remove("open");
-    $("menuToggle").setAttribute("aria-expanded", "false");
-    $("menuToggle").textContent = "☰";
-  });
-});
-
-function showQuestion() {
-  answered = false;
-
-  const question = questions[qi];
-
-  $("quizProgress").textContent =
-    `PERGUNTA ${qi + 1} DE ${questions.length}`;
-
-  $("quizScore").textContent =
-    `${score} ${score === 1 ? "PONTO" : "PONTOS"}`;
-
-  $("progressFill").style.width =
-    `${qi / questions.length * 100}%`;
-
-  $("questionText").textContent = question.q;
-  $("quizFeedback").textContent = "";
-  $("quizOptions").innerHTML = "";
-
-  question.a.forEach((answer, i) => {
-    const button = document.createElement("button");
-
-    button.className = "option";
-    button.textContent =
-      String.fromCharCode(65 + i) + ". " + answer;
-
-    button.addEventListener("click", () => answerQuestion(i));
-
-    $("quizOptions").appendChild(button);
-  });
-
-  $("nextQuestion").disabled = true;
-  $("nextQuestion").hidden = false;
-
-  $("nextQuestion").textContent =
-    qi === questions.length - 1
-      ? "Ver resultado →"
-      : "Próxima pergunta →";
-}
-
-function answerQuestion(i) {
-  if (answered) return;
-
-  answered = true;
-
-  const question = questions[qi];
-  const options = [...$("quizOptions").children];
-
-  options.forEach((button, n) => {
-    button.disabled = true;
-
-    if (n === question.c) {
-      button.classList.add("correct");
-    } else if (n === i) {
-      button.classList.add("wrong");
-    }
-  });
-
-  if (i === question.c) {
-    score++;
+  if (!favorites.length) {
+    $("#favoritesList").innerHTML =
+      "<li>Nenhuma música favorita ainda.</li>";
+    return;
   }
 
-  $("quizScore").textContent =
-    `${score} ${score === 1 ? "PONTO" : "PONTOS"}`;
-
-  $("quizFeedback").textContent =
-    (i === question.c ? "Isso aí! " : "Boa tentativa! ") +
-    question.e;
-
-  $("nextQuestion").disabled = false;
+  favorites.forEach(name => {
+    const li = document.createElement("li");
+    li.textContent = "♥ " + name;
+    $("#favoritesList").appendChild(li);
+  });
 }
 
-$("nextQuestion").addEventListener("click", () => {
-  if (!answered) return;
+function selectSong(index) {
+  selectedSong = index;
+  const song = songs[index];
 
-  if (qi === questions.length - 1) {
-    $("progressFill").style.width = "100%";
-    $("quizProgress").textContent = "QUIZ FINALIZADO";
+  $("#currentMusic").textContent = song.name;
 
-    $("quizScore").textContent =
-      `${score} / ${questions.length} PONTOS`;
+  $("#listenLink").href =
+    `https://open.spotify.com/search/${encodeURIComponent(
+      "Jorge Ben Jor " + song.name
+    )}`;
 
-    $("questionText").textContent =
-      score === 8
-        ? "Você conhece muito bem esse universo!"
-        : score >= 5
-          ? "Você está no ritmo! Mandou bem."
-          : "Sua viagem pelo universo de Jorge Ben está só começando!";
+  document.documentElement.style.setProperty(
+    "--accent",
+    song.color
+  );
 
-    $("quizOptions").innerHTML = "";
+  $$(".music-row").forEach((row, i) => {
+    row.classList.toggle("selected", i === index);
+  });
 
-    $("quizFeedback").textContent =
-      `Você acertou ${score} de ${questions.length} perguntas. Que tal ouvir uma música e tentar novamente?`;
+  updateFavoriteButton();
+}
 
-    $("nextQuestion").hidden = true;
+function updateFavoriteButton() {
+  if (selectedSong === null) return;
+
+  const name = songs[selectedSong].name;
+
+  $("#favoriteBtn").textContent =
+    favorites.includes(name)
+      ? "♥ Remover dos favoritos"
+      : "♡ Adicionar aos favoritos";
+}
+
+$("#favoriteBtn").addEventListener("click", () => {
+  if (selectedSong === null) {
+    alert("Escolha uma música primeiro!");
+    return;
+  }
+
+  const name = songs[selectedSong].name;
+
+  if (favorites.includes(name)) {
+    favorites = favorites.filter(item => item !== name);
   } else {
-    qi++;
-    showQuestion();
+    favorites.push(name);
+  }
+
+  localStorage.setItem(
+    "benjorFavorites",
+    JSON.stringify(favorites)
+  );
+
+  renderFavorites();
+  updateFavoriteButton();
+});
+
+renderSongs();
+renderFavorites();
+
+// BRINCADEIRA: COMPLETE O TÍTULO
+$$("[data-word]").forEach(button => {
+  button.addEventListener("click", () => {
+    const correct = button.dataset.word === "nada";
+
+    $("#wordFeedback").textContent = correct
+      ? "Acertou! Mas, Que Nada! ✳"
+      : "Quase! A palavra certa é Nada.";
+
+    $("#wordFeedback").style.color =
+      correct ? "green" : "firebrick";
+  });
+});
+
+// BRINCADEIRA: VERDADEIRO OU FALSO
+const truths = [
+  {
+    question:"África Brasil foi lançado em 1976.",
+    answer:true,
+    explanation:"Isso mesmo! O álbum é de 1976."
+  },
+  {
+    question:"Samba Esquema Novo foi lançado em 1974.",
+    answer:false,
+    explanation:"Não. O disco foi lançado em 1963."
+  },
+  {
+    question:"Força Bruta foi lançado em 1970.",
+    answer:true,
+    explanation:"Correto! Força Bruta é de 1970."
+  },
+  {
+    question:"Negro é Lindo foi lançado em 1981.",
+    answer:false,
+    explanation:"Na verdade, Negro é Lindo foi lançado em 1971."
+  }
+];
+
+let truthIndex = 0;
+
+function showTruth() {
+  $("#truthQuestion").textContent =
+    truths[truthIndex].question;
+
+  $("#truthFeedback").textContent = "";
+
+  $$("[data-truth]").forEach(button => {
+    button.disabled = false;
+
+    button.onclick = () => {
+      const choice = button.dataset.truth === "true";
+      const item = truths[truthIndex];
+
+      $("#truthFeedback").textContent =
+        choice === item.answer
+          ? "Acertou! " + item.explanation
+          : "Não foi dessa vez. " + item.explanation;
+
+      $$("[data-truth]").forEach(b => b.disabled = true);
+    };
+  });
+}
+
+$("#nextTruth").addEventListener("click", () => {
+  truthIndex = (truthIndex + 1) % truths.length;
+  showTruth();
+});
+
+showTruth();
+
+// QUIZ PRINCIPAL
+const questions = [
+  {
+    question:"Em que ano foi lançado Samba Esquema Novo?",
+    answers:["1963","1967","1970","1974"],
+    correct:0,
+    explanation:"Samba Esquema Novo foi lançado em 1963."
+  },
+  {
+    question:"Qual destes discos é de 1974?",
+    answers:["Força Bruta","A Tábua de Esmeralda","África Brasil","Negro é Lindo"],
+    correct:1,
+    explanation:"A Tábua de Esmeralda é de 1974."
+  },
+  {
+    question:"Qual música também é conhecida como Umbabarauma?",
+    answers:["Taj Mahal","Fio Maravilha","Ponta de Lança Africano","Chove Chuva"],
+    correct:2,
+    explanation:"Ponta de Lança Africano também é conhecida como Umbabarauma."
+  },
+  {
+    question:"Em que ano saiu África Brasil?",
+    answers:["1971","1974","1975","1976"],
+    correct:3,
+    explanation:"África Brasil foi lançado em 1976."
+  },
+  {
+    question:"Qual música faz parte de Força Bruta?",
+    answers:["Oba, Lá Vem Ela","Taj Mahal","Jorge da Capadócia","Mas, Que Nada!"],
+    correct:0,
+    explanation:"Oba, Lá Vem Ela está no álbum Força Bruta."
+  },
+  {
+    question:"Qual instrumento marcou a sonoridade de Jorge Ben desde o início?",
+    answers:["Acordeão","Violão","Flauta","Harpa"],
+    correct:1,
+    explanation:"O violão é uma marca da sonoridade de Jorge Ben."
+  },
+  {
+    question:"Qual álbum tem o título Negro é Lindo?",
+    answers:["Ben","Solta o Pavão","Negro é Lindo","Tropical"],
+    correct:2,
+    explanation:"Negro é Lindo foi lançado em 1971."
+  },
+  {
+    question:"Com quem Jorge Ben gravou Gil & Jorge?",
+    answers:["Caetano Veloso","Tim Maia","Milton Nascimento","Gilberto Gil"],
+    correct:3,
+    explanation:"O álbum foi gravado com Gilberto Gil."
+  }
+];
+
+let questionIndex = 0;
+let points = 0;
+let hasAnswered = false;
+let quizStarted = false;
+
+function startQuiz() {
+  questionIndex = 0;
+  points = 0;
+  quizStarted = true;
+  $("#nextQuestion").textContent = "RESPONDER ↗";
+  renderQuestion();
+}
+
+function renderQuestion() {
+  hasAnswered = false;
+
+  const item = questions[questionIndex];
+
+  $("#questionNumber").textContent =
+    `PERGUNTA ${questionIndex + 1} DE ${questions.length}`;
+
+  $("#score").textContent = `${points} PONTOS`;
+
+  $("#progressBar").style.width =
+    `${questionIndex / questions.length * 100}%`;
+
+  $("#question").textContent = item.question;
+  $("#quizFeedback").textContent = "";
+  $("#answers").innerHTML = "";
+
+  item.answers.forEach((answer, index) => {
+    const button = document.createElement("button");
+    button.className = "answer";
+    button.textContent =
+      `${String.fromCharCode(65 + index)}. ${answer}`;
+
+    button.addEventListener("click", () => {
+      $$(".answer").forEach(b =>
+        b.classList.remove("selected")
+      );
+
+      button.classList.add("selected");
+      $("#nextQuestion").disabled = false;
+    });
+
+    $("#answers").appendChild(button);
+  });
+
+  $("#nextQuestion").disabled = true;
+}
+
+function finishQuiz() {
+  $("#progressBar").style.width = "100%";
+  $("#questionNumber").textContent = "RESULTADO FINAL";
+  $("#score").textContent = `${points} DE 8 PONTOS`;
+
+  let message = "Continue explorando os discos!";
+
+  if (points === 8) {
+    message = "Você é uma enciclopédia do suingue!";
+  } else if (points >= 6) {
+    message = "Mandou muito bem! Você conhece a obra!";
+  } else if (points >= 3) {
+    message = "Bom começo! Tem muito som para descobrir!";
+  }
+
+  $("#question").textContent = message;
+  $("#answers").innerHTML =
+    `<h2>${points} / 8 pontos</h2>`;
+
+  $("#quizFeedback").textContent =
+    "Compartilhe o resultado e desafie alguém!";
+
+  $("#nextQuestion").textContent = "JOGAR NOVAMENTE ↻";
+  $("#nextQuestion").dataset.restart = "true";
+}
+
+$("#nextQuestion").addEventListener("click", () => {
+  if ($("#nextQuestion").dataset.restart === "true") {
+    delete $("#nextQuestion").dataset.restart;
+    startQuiz();
+    return;
+  }
+
+  if (!quizStarted) {
+    startQuiz();
+    return;
+  }
+
+  if (!hasAnswered) {
+    const selected = $(".answer.selected");
+
+    if (!selected) return;
+
+    const selectedIndex = $$(".answer").indexOf(selected);
+    const item = questions[questionIndex];
+
+    hasAnswered = true;
+
+    $$(".answer").forEach((button, index) => {
+      button.disabled = true;
+
+      if (index === item.correct) {
+        button.classList.add("correct");
+      } else if (index === selectedIndex) {
+        button.classList.add("wrong");
+      }
+    });
+
+    if (selectedIndex === item.correct) {
+      points++;
+    }
+
+    $("#score").textContent = `${points} PONTOS`;
+    $("#quizFeedback").textContent = item.explanation;
+
+    $("#nextQuestion").textContent =
+      questionIndex === questions.length - 1
+        ? "VER RESULTADO ↗"
+        : "PRÓXIMA PERGUNTA ↗";
+
+    return;
+  }
+
+  questionIndex++;
+
+  if (questionIndex < questions.length) {
+    renderQuestion();
+  } else {
+    finishQuiz();
   }
 });
 
-$("restartQuiz").addEventListener("click", () => {
-  qi = 0;
-  score = 0;
-  showQuestion();
+// GALERIA: AMPLIAR FOTOS
+$$(".photo-grid img").forEach(image => {
+  image.addEventListener("click", () => {
+    $("#lightboxImage").src = image.src;
+    $("#lightbox").classList.add("open");
+  });
 });
 
-chooseSong(0);
-showQuestion();
+$("#closeLightbox").addEventListener("click", () => {
+  $("#lightbox").classList.remove("open");
+});
+
+$("#lightbox").addEventListener("click", event => {
+  if (event.target.id === "lightbox") {
+    $("#lightbox").classList.remove("open");
+  }
+});
+
+// COMPARTILHAR
+$("#shareBtn").addEventListener("click", async () => {
+  const data = {
+    title:"Universo Ben Jor",
+    text:"Vem conhecer esse universo de música e brincadeiras!",
+    url:location.href
+  };
+
+  try {
+    if (navigator.share) {
+      await navigator.share(data);
+    } else {
+      await navigator.clipboard.writeText(location.href);
+      alert("Link copiado!");
+    }
+  } catch (error) {
+    alert("Copie o endereço do site para compartilhar.");
+  }
+});

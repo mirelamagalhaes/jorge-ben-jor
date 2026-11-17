@@ -5,196 +5,257 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#ed653c">
-  <title>Jorge Ben Jor | Universo Cigana</title>
-
+  <title>Universo Ben Jor | Um mundo de suingue</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
-
 <body>
 
 <header class="header">
-  <a class="logo" href="#inicio">UNIVERSO <b>CIGANA</b></a>
+  <a class="logo" href="#inicio">BEN<span>JOR</span> ✳</a>
 
-  <button id="menuToggle" class="menu-toggle"
-    aria-expanded="false" aria-controls="nav">☰</button>
+  <button id="menuBtn" class="menu-btn">☰</button>
 
-  <nav id="nav">
+  <nav id="menu">
     <a href="#inicio">Início</a>
+    <a href="#discos">Álbuns</a>
     <a href="#musicas">Músicas</a>
-    <a href="#historia">História</a>
+    <a href="#fotos">Galeria</a>
+    <a href="#jogos">Brincadeiras</a>
     <a href="#quiz">Quiz</a>
   </nav>
 </header>
 
 <main>
 
-<section class="hero wrap" id="inicio">
-  <div>
-    <p class="eyebrow">UM UNIVERSO DE RITMO E POESIA</p>
-
-    <h1>O balanço de<br><em>Jorge Ben Jor.</em></h1>
-
-    <p class="lead">
-      Uma viagem pelas canções, histórias e cores de um dos sons
-      mais marcantes da música brasileira.
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <span class="tag">SAMBA • SOUL • FUNK • BRASIL</span>
+    <h1>O mundo gira.<br><em>O suingue</em> fica.</h1>
+    <p>
+      Entre no universo de Jorge Ben Jor.
+      Explore os discos, descubra histórias,
+      conheça músicas e teste seus conhecimentos.
     </p>
-
-    <a class="btn" href="#musicas">Explorar músicas ↗</a>
+    <a href="#discos" class="button">EXPLORAR O UNIVERSO ↓</a>
   </div>
 
-  <div class="art">
+  <div class="hero-image">
     <div class="sun"></div>
-    <div class="vinyl"><span>JBJ</span></div>
-    <small>SAMBA • SOUL • BALANÇO</small>
+    <img
+      src="https://commons.wikimedia.org/wiki/Special:FilePath/BenJorJorge.jpg"
+      alt="Jorge Ben Jor">
+    <div class="sticker">SOM<br>BRASILEIRO ✳</div>
   </div>
 
-  <div class="scroll-note">ROLE PARA SENTIR O SOM ↓</div>
+  <span class="hero-bottom">UM TRIBUTO À MÚSICA BRASILEIRA</span>
 </section>
 
-<section class="band">
-  <p>“A música transforma qualquer instante em lembrança.”</p>
-  <small>UNIVERSO CIGANA — JORGE BEN JOR</small>
-</section>
+<div class="ticker">
+  MAS QUE NADA ✳ PAÍS TROPICAL ✳ TAJ MAHAL ✳ CHOVE CHUVA ✳
+</div>
 
-<section class="wrap section" id="musicas">
-  <p class="eyebrow">ESCOLHA A TRILHA</p>
-  <h2>Cada música,<br><em>um universo.</em></h2>
+<section class="section" id="discos">
+  <div class="section-title">
+    <span class="tag">A COLEÇÃO</span>
+    <h2>Discos que contam<br><em>histórias.</em></h2>
+    <p>Clique em um álbum para conhecer um pouco mais.</p>
+  </div>
 
-  <p class="muted">
-    Clique em uma faixa para transformar as cores do site
-    e conhecer uma nova atmosfera.
+  <div class="album-feature">
+    <img id="albumImage" src="" alt="Capa do álbum selecionado">
+    <div>
+      <span id="albumYear">1974</span>
+      <h3 id="albumTitle">A Tábua de Esmeralda</h3>
+      <p id="albumDescription">
+        Explore a discografia de Jorge Ben Jor.
+      </p>
+      <a id="albumLink" class="button" target="_blank">
+        ENCONTRAR ÁLBUM ↗
+      </a>
+    </div>
+  </div>
+
+  <div id="albumGrid" class="album-grid">
+    <p>Carregando capas dos álbuns...</p>
+  </div>
+
+  <p class="small-note">
+    As imagens das capas são obtidas do catálogo público de álbuns.
+    Direitos das artes pertencem aos respectivos titulares.
   </p>
+</section>
 
-  <div class="current">
-    <span>♫</span>
-    <div>
-      <small>ATMOSFERA ATUAL</small>
-      <strong id="currentTitle">Cigana</strong>
-    </div>
+<section class="section music-section" id="musicas">
+  <div class="section-title">
+    <span class="tag">APERTE O PLAY</span>
+    <h2>Qual é o seu<br><em>suingue?</em></h2>
+    <p>Escolha uma música e veja o visual do site mudar!</p>
   </div>
 
-  <div id="musicGrid" class="music-grid"></div>
+  <div class="music-layout">
+    <div id="musicList" class="music-list"></div>
 
-  <div class="favorites">
-    <h3>Suas favoritas ♥</h3>
-    <p id="favoritesEmpty">
-      Toque no coração de uma música para guardá-la aqui.
-    </p>
-    <div id="favoritesList"></div>
+    <div class="player">
+      <span>TOCANDO NO SEU UNIVERSO</span>
+      <h3 id="currentMusic">Escolha uma música</h3>
+      <div class="vinyl"><div></div></div>
+      <a id="listenLink" class="button" target="_blank">
+        ENCONTRAR PARA OUVIR ↗
+      </a>
+      <button id="favoriteBtn" class="favorite">
+        ♡ Adicionar aos favoritos
+      </button>
+      <div class="favorites">
+        <h4>♥ Minhas favoritas</h4>
+        <ul id="favoritesList"></ul>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="story" id="historia">
-  <div class="wrap story-grid">
+<section class="quote">
+  <span>✳</span>
+  <h2>Uma história feita de<br><em>ritmo e poesia.</em></h2>
+  <p>Um passeio pela música de um dos grandes nomes da cultura brasileira.</p>
+</section>
 
-    <div>
-      <p class="eyebrow">UM POUCO DE HISTÓRIA</p>
-      <h2>Um som que<br>não cabe em <em>rótulos.</em></h2>
-    </div>
+<section class="section" id="fotos">
+  <div class="section-title">
+    <span class="tag">MEMÓRIA VISUAL</span>
+    <h2>Galeria de<br><em>momentos.</em></h2>
+    <p>Fotografias de apresentações e registros da trajetória musical.</p>
+  </div>
 
-    <div>
-      <p class="story-lead">
-        Jorge Ben Jor construiu uma linguagem musical própria,
-        misturando balanço, inventividade e referências de diferentes ritmos.
+  <div class="photo-grid">
+    <img
+      src="https://commons.wikimedia.org/wiki/Special:FilePath/BenJorJorge.jpg"
+      alt="Jorge Ben Jor"
+      class="photo-large">
+
+    <img
+      src="https://commons.wikimedia.org/wiki/Special:FilePath/Jorge_Ben_e_o_Trio_Mocot%C3%B3_no_Teatro_da_Lagoa%2C_1971.jpg"
+      alt="Jorge Ben e Trio Mocotó em 1971">
+
+    <img
+      src="https://commons.wikimedia.org/wiki/Special:FilePath/Jorge_benjor_paris.jpg"
+      alt="Jorge Ben Jor em Paris">
+
+    <img
+      src="https://commons.wikimedia.org/wiki/Special:FilePath/Jorge_Ben_Jor_at_Live_Earth.jpg"
+      alt="Jorge Ben Jor no Live Earth">
+  </div>
+
+  <p class="small-note">
+    Fotografias do Wikimedia Commons. Consulte os créditos e as
+    condições de reutilização de cada arquivo antes de republicar.
+    <a href="https://commons.wikimedia.org/wiki/Category:Jorge_Ben_Jor" target="_blank">Ver acervo</a>.
+  </p>
+</section>
+
+<section class="games" id="jogos">
+  <div class="section-title">
+    <span class="tag">HORA DE BRINCAR</span>
+    <h2>Você conhece<br><em>esse som?</em></h2>
+    <p>Pequenos desafios para quem gosta de música.</p>
+  </div>
+
+  <div class="game-grid">
+
+    <article class="game-card">
+      <span>DESAFIO 01</span>
+      <h3>Complete o título</h3>
+      <p>Mas, Que ______!</p>
+
+      <div class="game-options">
+        <button data-word="nada">Nada</button>
+        <button data-word="chuva">Chuva</button>
+        <button data-word="tropical">Tropical</button>
+      </div>
+
+      <p id="wordFeedback" class="feedback"></p>
+    </article>
+
+    <article class="game-card dark">
+      <span>DESAFIO 02</span>
+      <h3>Verdadeiro ou falso?</h3>
+      <p id="truthQuestion">
+        África Brasil foi lançado em 1976.
       </p>
 
-      <article>
-        <b>1963</b>
-        <div>
-          <h3>O começo de uma jornada</h3>
-          <p>
-            O álbum <i>Samba Esquema Novo</i> apresentou canções
-            como “Mas Que Nada” e “Chove Chuva”.
-          </p>
-        </div>
-      </article>
+      <div class="game-options">
+        <button data-truth="true">Verdadeiro</button>
+        <button data-truth="false">Falso</button>
+      </div>
 
-      <article>
-        <b>1976</b>
-        <div>
-          <h3>Novas sonoridades</h3>
-          <p>
-            Em <i>África Brasil</i>, Jorge explorou uma fusão
-            marcante de samba, funk e referências africanas.
-          </p>
-        </div>
-      </article>
-
-      <article>
-        <b>SEMPRE</b>
-        <div>
-          <h3>Um legado em movimento</h3>
-          <p>
-            Seu repertório segue atravessando gerações e inspirando artistas.
-          </p>
-        </div>
-      </article>
-    </div>
+      <p id="truthFeedback" class="feedback"></p>
+      <button id="nextTruth" class="next-button">
+        Próxima afirmação ↗
+      </button>
+    </article>
 
   </div>
 </section>
 
-<section class="wrap section quiz-section" id="quiz">
-
-  <div>
-    <p class="eyebrow">VOCÊ CONHECE O MESTRE?</p>
-    <h2>Hora de testar<br><em>seu balanço.</em></h2>
-
-    <p class="muted">
-      Responda às perguntas e descubra quantos pontos você faz
-      nesse passeio pelo universo de Jorge Ben Jor.
-    </p>
+<section class="section quiz-section" id="quiz">
+  <div class="section-title">
+    <span class="tag">O GRANDE DESAFIO</span>
+    <h2>Quiz do<br><em>Ben Jor.</em></h2>
+    <p>Responda às perguntas e descubra quantos pontos consegue fazer!</p>
   </div>
 
-  <div class="quiz-card">
-    <div class="quiz-top">
-      <span id="quizProgress">PERGUNTA 1 DE 8</span>
-      <span id="quizScore">0 PONTOS</span>
+  <div class="quiz-box">
+    <div class="quiz-info">
+      <span id="questionNumber">PERGUNTA 1 DE 8</span>
+      <span id="score">0 PONTOS</span>
     </div>
 
     <div class="progress">
-      <i id="progressFill"></i>
+      <div id="progressBar"></div>
     </div>
 
-    <h3 id="questionText"></h3>
+    <h3 id="question">Preparado para começar?</h3>
 
-    <div id="quizOptions" class="options"></div>
+    <div id="answers" class="answers"></div>
 
-    <p id="quizFeedback" aria-live="polite"></p>
+    <p id="quizFeedback" class="feedback"></p>
 
-    <button class="btn" id="nextQuestion" disabled>
-      Próxima pergunta →
-    </button>
-
-    <button class="restart" id="restartQuiz">
-      Recomeçar
+    <button id="nextQuestion" class="button">
+      COMEÇAR QUIZ ↗
     </button>
   </div>
+</section>
 
+<section class="share-section">
+  <div>
+    <span class="tag">ESPALHE O SUINGUE</span>
+    <h2>Compartilhe esse<br><em>universo.</em></h2>
+  </div>
+  <button id="shareBtn" class="button">COMPARTILHAR ↗</button>
 </section>
 
 </main>
 
 <footer>
-  <a class="logo" href="#inicio">UNIVERSO <b>CIGANA</b></a>
-  <p>Um tributo à música e ao balanço de Jorge Ben Jor.</p>
-  <a href="#inicio">VOLTAR AO TOPO ↑</a>
+  <a class="logo" href="#inicio">BEN<span>JOR</span> ✳</a>
+  <p>Um tributo de fã à música e à cultura brasileira.</p>
+  <div>
+    <a href="#inicio">Início</a>
+    <a href="#discos">Álbuns</a>
+    <a href="#quiz">Quiz</a>
+  </div>
+  <small>
+    Projeto não oficial. Marcas, fotografias e músicas pertencem
+    aos seus respectivos titulares.
+  </small>
 </footer>
 
-<aside class="player">
-  <div class="mini-vinyl">♫</div>
-
-  <div>
-    <small>OUVIR AGORA</small>
-    <strong id="miniTitle">Cigana</strong>
-  </div>
-
-  <button id="listenButton">Buscar no YouTube ↗</button>
-</aside>
+<div id="lightbox" class="lightbox">
+  <button id="closeLightbox">×</button>
+  <img id="lightboxImage" src="" alt="Foto ampliada">
+</div>
 
 </body>
 </html>
