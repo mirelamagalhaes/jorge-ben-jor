@@ -1,226 +1,423 @@
 
 const songs = [
-    { title: "Cigana", color: "#ed653c" },
-    { title: "Jorge da Capadócia", color: "#354b32" },
-    { title: "Domingas", color: "#bd8845" },
-    { title: "Oba, Lá Vem Ela", color: "#a93229" },
-    { title: "Me Chamando de Paixão", color: "#c58b50" },
-    { title: "Amante Amado", color: "#754b42" },
-    { title: "Por Causa de Você, Menina", color: "#71844b" },
-    { title: "Moça", color: "#cf674c" }
+  {
+    title: "Cigana",
+    sub: "A identidade do universo",
+    theme: {
+      bg: "#f6e8d2",
+      paper: "#fff8ed",
+      accent: "#ed653c",
+      dark: "#a93229",
+      soft: "#f3b27f"
+    }
+  },
+  {
+    title: "Jorge da Capadócia",
+    sub: "Força e espiritualidade",
+    theme: {
+      bg: "#e6e8d9",
+      paper: "#f8f8ee",
+      accent: "#536c42",
+      dark: "#354b32",
+      soft: "#a9b58a"
+    }
+  },
+  {
+    title: "Domingas",
+    sub: "Calor e delicadeza",
+    theme: {
+      bg: "#f0e2c8",
+      paper: "#fff7e7",
+      accent: "#bd8845",
+      dark: "#80542c",
+      soft: "#e3bd7d"
+    }
+  },
+  {
+    title: "Oba, Lá Vem Ela",
+    sub: "Energia e movimento",
+    theme: {
+      bg: "#f2ded6",
+      paper: "#fff4ed",
+      accent: "#b83d32",
+      dark: "#812820",
+      soft: "#e58b70"
+    }
+  },
+  {
+    title: "Me Chamando de Paixão",
+    sub: "Romance em tons dourados",
+    theme: {
+      bg: "#f3e7d6",
+      paper: "#fff9ef",
+      accent: "#c58b50",
+      dark: "#8b592e",
+      soft: "#e8c18a"
+    }
+  },
+  {
+    title: "Amante Amado",
+    sub: "Um clima intenso",
+    theme: {
+      bg: "#e9ded8",
+      paper: "#f9f0eb",
+      accent: "#754b42",
+      dark: "#4b302c",
+      soft: "#b98a7d"
+    }
+  },
+  {
+    title: "Por Causa de Você, Menina",
+    sub: "Leveza e frescor",
+    theme: {
+      bg: "#e8eadc",
+      paper: "#f8f9ef",
+      accent: "#71844b",
+      dark: "#46562d",
+      soft: "#b8c58d"
+    }
+  },
+  {
+    title: "Moça",
+    sub: "Doçura em movimento",
+    theme: {
+      bg: "#f2e1d9",
+      paper: "#fff7f1",
+      accent: "#cf674c",
+      dark: "#93402e",
+      soft: "#eda58d"
+    }
+  }
 ];
 
-let currentSong = -1;
-let favorites = JSON.parse(localStorage.getItem("jorgeFavorites") || "[]");
+const questions = [
+  {
+    q: "Qual é o nome de nascimento de Jorge Ben Jor?",
+    a: [
+      "Jorge Duílio Lima Menezes",
+      "Jorge Augusto Ben Lima",
+      "Jorge Carlos Menezes Silva",
+      "Jorge Ben de Oliveira"
+    ],
+    c: 0,
+    e: "Seu nome de nascimento é Jorge Duílio Lima Menezes."
+  },
+  {
+    q: "Qual álbum de 1963 apresentou Jorge Ben ao grande público?",
+    a: [
+      "África Brasil",
+      "Samba Esquema Novo",
+      "A Tábua de Esmeralda",
+      "Força Bruta"
+    ],
+    c: 1,
+    e: "Samba Esquema Novo foi lançado em 1963."
+  },
+  {
+    q: "Qual destas músicas é um grande sucesso do início da carreira?",
+    a: [
+      "Mas Que Nada",
+      "W/Brasil",
+      "Xica da Silva",
+      "Fio Maravilha"
+    ],
+    c: 0,
+    e: "Mas Que Nada foi um dos primeiros grandes sucessos de Jorge Ben."
+  },
+  {
+    q: "Em que ano foi lançado o álbum África Brasil?",
+    a: ["1963", "1969", "1976", "1989"],
+    c: 2,
+    e: "África Brasil foi lançado em 1976."
+  },
+  {
+    q: "Qual destas músicas está associada ao álbum África Brasil?",
+    a: [
+      "Taj Mahal",
+      "Chove Chuva",
+      "Que Pena",
+      "Cadê Teresa"
+    ],
+    c: 0,
+    e: "Taj Mahal é uma faixa conhecida de África Brasil."
+  },
+  {
+    q: "Qual mistura de estilos descreve a sonoridade de Jorge Ben Jor?",
+    a: [
+      "Samba, rock e funk",
+      "Ópera, polca e valsa",
+      "Country, bluegrass e folk",
+      "Reggae, country e tango"
+    ],
+    c: 0,
+    e: "Sua música mistura elementos de samba, rock, funk e outras influências."
+  },
+  {
+    q: "Em qual cidade brasileira Jorge Ben Jor nasceu?",
+    a: [
+      "Salvador",
+      "Recife",
+      "Rio de Janeiro",
+      "Belo Horizonte"
+    ],
+    c: 2,
+    e: "Jorge Ben Jor nasceu no Rio de Janeiro."
+  },
+  {
+    q: "Qual instrumento é especialmente associado à sua música?",
+    a: [
+      "Violão",
+      "Harpa",
+      "Acordeão",
+      "Bandolim"
+    ],
+    c: 0,
+    e: "Jorge Ben é conhecido por seu jeito marcante de tocar violão."
+  }
+];
 
-const musicGrid = document.getElementById("musicGrid");
-const favoritesList = document.getElementById("favoritesList");
-const currentTitle = document.getElementById("currentTitle");
-const playBtn = document.getElementById("playBtn");
-const listenLink = document.getElementById("listenLink");
-const miniVinyl = document.getElementById("miniVinyl");
+const $ = id => document.getElementById(id);
 
-// CRIAR PLAYLIST
+let selected = 0;
+let favorites = readFavorites();
+let qi = 0;
+let score = 0;
+let answered = false;
+
+function readFavorites() {
+  try {
+    const value = JSON.parse(
+      localStorage.getItem("universoCiganaFavorites") || "[]"
+    );
+
+    return Array.isArray(value)
+      ? value.filter(n =>
+          Number.isInteger(n) && n >= 0 && n < songs.length
+        )
+      : [];
+  } catch {
+    return [];
+  }
+}
+
+function theme(t) {
+  const root = document.documentElement;
+
+  root.style.setProperty("--bg", t.bg);
+  root.style.setProperty("--paper", t.paper);
+  root.style.setProperty("--accent", t.accent);
+  root.style.setProperty("--dark", t.dark);
+  root.style.setProperty("--soft", t.soft);
+
+  document.querySelector('meta[name="theme-color"]').content = t.accent;
+}
+
+function chooseSong(i) {
+  selected = i;
+  theme(songs[i].theme);
+
+  $("currentTitle").textContent = songs[i].title;
+  $("miniTitle").textContent = songs[i].title;
+
+  renderSongs();
+}
 
 function renderSongs() {
-    musicGrid.innerHTML = "";
+  $("musicGrid").innerHTML = "";
 
-    songs.forEach((song, index) => {
-        const isFavorite = favorites.includes(index);
+  songs.forEach((song, i) => {
+    const card = document.createElement("div");
 
-        const card = document.createElement("article");
-        card.className = "music-card";
+    card.className =
+      "music-card" + (selected === i ? " selected" : "");
 
-        const art = document.createElement("div");
-        art.className = "album-art";
-        art.style.background = `linear-gradient(145deg, ${song.color}, #251e1b)`;
+    card.innerHTML = `
+      <span class="card-no">FAIXA ${String(i + 1).padStart(2, "0")}</span>
+      <div class="card-art" style="--card:${song.theme.accent}"></div>
+      <span class="card-title"></span>
+      <span class="card-sub"></span>
+      <button class="heart" type="button"></button>
+    `;
 
-        const artTitle = document.createElement("span");
-        artTitle.textContent = song.title;
-        art.appendChild(artTitle);
+    card.querySelector(".card-title").textContent = song.title;
+    card.querySelector(".card-sub").textContent = song.sub;
 
-        const title = document.createElement("h3");
-        title.textContent = song.title;
+    const heart = card.querySelector(".heart");
 
-        const actions = document.createElement("div");
-        actions.className = "card-actions";
+    heart.textContent = favorites.includes(i) ? "♥" : "♡";
 
-        const play = document.createElement("button");
-        play.textContent = "▶ Ouvir";
-        play.addEventListener("click", () => selectSong(index));
-
-        const favorite = document.createElement("button");
-        favorite.className = "favorite" + (isFavorite ? " active" : "");
-        favorite.textContent = isFavorite ? "♥" : "♡";
-        favorite.setAttribute("aria-label", "Adicionar aos favoritos");
-        favorite.addEventListener("click", () => toggleFavorite(index));
-
-        actions.append(play, favorite);
-        card.append(art, title, actions);
-        musicGrid.appendChild(card);
-    });
-}
-
-// SELECIONAR MÚSICA
-
-function selectSong(index) {
-    currentSong = index;
-
-    const song = songs[index];
-
-    currentTitle.textContent = song.title;
-
-    const query = encodeURIComponent(
-        `Jorge Ben Jor ${song.title} música`
+    heart.setAttribute(
+      "aria-label",
+      favorites.includes(i)
+        ? "Remover das favoritas"
+        : "Adicionar às favoritas"
     );
 
-    listenLink.href =
-        `https://www.youtube.com/results?search_query=${query}`;
+    card.addEventListener("click", () => chooseSong(i));
 
-    playBtn.textContent = "↗";
-    miniVinyl.classList.add("spinning");
+    heart.addEventListener("click", event => {
+      event.stopPropagation();
 
-    // Abre resultados para ouvir a música.
-    window.open(listenLink.href, "_blank", "noopener,noreferrer");
+      favorites = favorites.includes(i)
+        ? favorites.filter(x => x !== i)
+        : [...favorites, i];
+
+      try {
+        localStorage.setItem(
+          "universoCiganaFavorites",
+          JSON.stringify(favorites)
+        );
+      } catch {}
+
+      renderSongs();
+    });
+
+    $("musicGrid").appendChild(card);
+  });
+
+  $("favoritesList").innerHTML = "";
+  $("favoritesEmpty").hidden = favorites.length > 0;
+
+  favorites.forEach(i => {
+    const button = document.createElement("button");
+
+    button.className = "favorite-chip";
+    button.textContent = "♥ " + songs[i].title;
+
+    button.addEventListener("click", () => chooseSong(i));
+
+    $("favoritesList").appendChild(button);
+  });
 }
 
-// BOTÃO DO PLAYER
+$("listenButton").addEventListener("click", () => {
+  const url =
+    "https://www.youtube.com/results?search_query=" +
+    encodeURIComponent("Jorge Ben Jor " + songs[selected].title);
 
-playBtn.addEventListener("click", () => {
-    if (currentSong === -1) {
-        selectSong(0);
-        return;
+  window.open(url, "_blank", "noopener,noreferrer");
+});
+
+$("menuToggle").addEventListener("click", () => {
+  const open = $("nav").classList.toggle("open");
+
+  $("menuToggle").setAttribute("aria-expanded", String(open));
+  $("menuToggle").textContent = open ? "×" : "☰";
+});
+
+$("nav").querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    $("nav").classList.remove("open");
+    $("menuToggle").setAttribute("aria-expanded", "false");
+    $("menuToggle").textContent = "☰";
+  });
+});
+
+function showQuestion() {
+  answered = false;
+
+  const question = questions[qi];
+
+  $("quizProgress").textContent =
+    `PERGUNTA ${qi + 1} DE ${questions.length}`;
+
+  $("quizScore").textContent =
+    `${score} ${score === 1 ? "PONTO" : "PONTOS"}`;
+
+  $("progressFill").style.width =
+    `${qi / questions.length * 100}%`;
+
+  $("questionText").textContent = question.q;
+  $("quizFeedback").textContent = "";
+  $("quizOptions").innerHTML = "";
+
+  question.a.forEach((answer, i) => {
+    const button = document.createElement("button");
+
+    button.className = "option";
+    button.textContent =
+      String.fromCharCode(65 + i) + ". " + answer;
+
+    button.addEventListener("click", () => answerQuestion(i));
+
+    $("quizOptions").appendChild(button);
+  });
+
+  $("nextQuestion").disabled = true;
+  $("nextQuestion").hidden = false;
+
+  $("nextQuestion").textContent =
+    qi === questions.length - 1
+      ? "Ver resultado →"
+      : "Próxima pergunta →";
+}
+
+function answerQuestion(i) {
+  if (answered) return;
+
+  answered = true;
+
+  const question = questions[qi];
+  const options = [...$("quizOptions").children];
+
+  options.forEach((button, n) => {
+    button.disabled = true;
+
+    if (n === question.c) {
+      button.classList.add("correct");
+    } else if (n === i) {
+      button.classList.add("wrong");
     }
+  });
 
-    // O áudio é reproduzido na plataforma externa.
-    const song = songs[currentSong];
-    const query = encodeURIComponent(
-        `Jorge Ben Jor ${song.title} música`
-    );
+  if (i === question.c) {
+    score++;
+  }
 
-    window.open(
-        `https://www.youtube.com/results?search_query=${query}`,
-        "_blank",
-        "noopener,noreferrer"
-    );
-});
+  $("quizScore").textContent =
+    `${score} ${score === 1 ? "PONTO" : "PONTOS"}`;
 
-// MÚSICA ANTERIOR
+  $("quizFeedback").textContent =
+    (i === question.c ? "Isso aí! " : "Boa tentativa! ") +
+    question.e;
 
-document.getElementById("prevBtn").addEventListener("click", () => {
-    const index = currentSong <= 0
-        ? songs.length - 1
-        : currentSong - 1;
-
-    selectSong(index);
-});
-
-// PRÓXIMA MÚSICA
-
-document.getElementById("nextBtn").addEventListener("click", () => {
-    const index = (currentSong + 1) % songs.length;
-    selectSong(index);
-});
-
-// FAVORITOS
-
-function toggleFavorite(index) {
-    if (favorites.includes(index)) {
-        favorites = favorites.filter(item => item !== index);
-    } else {
-        favorites.push(index);
-    }
-
-    localStorage.setItem(
-        "jorgeFavorites",
-        JSON.stringify(favorites)
-    );
-
-    renderSongs();
-    renderFavorites();
+  $("nextQuestion").disabled = false;
 }
 
-// MOSTRAR FAVORITOS
+$("nextQuestion").addEventListener("click", () => {
+  if (!answered) return;
 
-function renderFavorites() {
-    favoritesList.innerHTML = "";
+  if (qi === questions.length - 1) {
+    $("progressFill").style.width = "100%";
+    $("quizProgress").textContent = "QUIZ FINALIZADO";
 
-    if (favorites.length === 0) {
-        const message = document.createElement("p");
-        message.textContent =
-            "Você ainda não adicionou músicas aos favoritos.";
+    $("quizScore").textContent =
+      `${score} / ${questions.length} PONTOS`;
 
-        favoritesList.appendChild(message);
-        return;
-    }
+    $("questionText").textContent =
+      score === 8
+        ? "Você conhece muito bem esse universo!"
+        : score >= 5
+          ? "Você está no ritmo! Mandou bem."
+          : "Sua viagem pelo universo de Jorge Ben está só começando!";
 
-    favorites.forEach(index => {
-        const item = document.createElement("button");
-        item.className = "favorite-item";
-        item.textContent = "♥ " + songs[index].title;
+    $("quizOptions").innerHTML = "";
 
-        item.addEventListener("click", () => selectSong(index));
+    $("quizFeedback").textContent =
+      `Você acertou ${score} de ${questions.length} perguntas. Que tal ouvir uma música e tentar novamente?`;
 
-        favoritesList.appendChild(item);
-    });
-}
-
-// MENU MOBILE
-
-const menuToggle = document.getElementById("menuToggle");
-const nav = document.getElementById("nav");
-
-menuToggle.addEventListener("click", () => {
-    nav.classList.toggle("open");
-
-    menuToggle.textContent =
-        nav.classList.contains("open") ? "✕" : "☰";
+    $("nextQuestion").hidden = true;
+  } else {
+    qi++;
+    showQuestion();
+  }
 });
 
-nav.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-        nav.classList.remove("open");
-        menuToggle.textContent = "☰";
-    });
+$("restartQuiz").addEventListener("click", () => {
+  qi = 0;
+  score = 0;
+  showQuestion();
 });
 
-// BOTÃO VOLTAR AO TOPO
-
-const topBtn = document.getElementById("topBtn");
-
-window.addEventListener("scroll", () => {
-    topBtn.style.display =
-        window.scrollY > 400 ? "block" : "none";
-});
-
-topBtn.addEventListener("click", () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-});
-
-// ANIMAÇÕES AO ROLAR A PÁGINA
-
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-        }
-    });
-}, {
-    threshold: 0.15
-});
-
-document.querySelectorAll(
-    ".music-card, .timeline-item, .visual-card"
-).forEach(element => {
-    element.classList.add("reveal");
-    observer.observe(element);
-});
-
-// INICIALIZAÇÃO
-
-renderSongs();
-renderFavorites();
+chooseSong(0);
+showQuestion();
