@@ -2,260 +2,235 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#ed653c">
-  <title>Universo Ben Jor | Um mundo de suingue</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AFTERSCHOOL 2000 ★</title>
+
+    <meta name="description" content="A little nostalgia. A whole new world.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header class="header">
-  <a class="logo" href="#inicio">BEN<span>JOR</span> ✳</a>
+    <div class="desktop">
 
-  <button id="menuBtn" class="menu-btn">☰</button>
+        <!-- TOPO -->
+        <header class="topbar">
+            <div class="logo">
+                <span>★</span> AFTERSCHOOL 2000
+            </div>
 
-  <nav id="menu">
-    <a href="#inicio">Início</a>
-    <a href="#discos">Álbuns</a>
-    <a href="#musicas">Músicas</a>
-    <a href="#fotos">Galeria</a>
-    <a href="#jogos">Brincadeiras</a>
-    <a href="#quiz">Quiz</a>
-  </nav>
-</header>
+            <div class="clock" id="clock">00:00:00</div>
+        </header>
 
-<main>
+        <!-- APRESENTAÇÃO -->
+        <main>
 
-<section class="hero" id="inicio">
-  <div class="hero-content">
-    <span class="tag">SAMBA • SOUL • FUNK • BRASIL</span>
-    <h1>O mundo gira.<br><em>O suingue</em> fica.</h1>
-    <p>
-      Entre no universo de Jorge Ben Jor.
-      Explore os discos, descubra histórias,
-      conheça músicas e teste seus conhecimentos.
-    </p>
-    <a href="#discos" class="button">EXPLORAR O UNIVERSO ↓</a>
-  </div>
+            <section class="hero">
 
-  <div class="hero-image">
-    <div class="sun"></div>
-    <img
-      src="https://commons.wikimedia.org/wiki/Special:FilePath/BenJorJorge.jpg"
-      alt="Jorge Ben Jor">
-    <div class="sticker">SOM<br>BRASILEIRO ✳</div>
-  </div>
+                <div class="sticker sticker-one">✿ GOOD VIBES ✿</div>
+                <div class="sticker sticker-two">SUMMER '06</div>
 
-  <span class="hero-bottom">UM TRIBUTO À MÚSICA BRASILEIRA</span>
-</section>
+                <p class="welcome">WELCOME TO MY LITTLE WORLD!</p>
 
-<div class="ticker">
-  MAS QUE NADA ✳ PAÍS TROPICAL ✳ TAJ MAHAL ✳ CHOVE CHUVA ✳
-</div>
+                <h1>
+                    AFTER<span>SCHOOL</span>
+                    <br>
+                    <span class="year">2000 ★</span>
+                </h1>
 
-<section class="section" id="discos">
-  <div class="section-title">
-    <span class="tag">A COLEÇÃO</span>
-    <h2>Discos que contam<br><em>histórias.</em></h2>
-    <p>Clique em um álbum para conhecer um pouco mais.</p>
-  </div>
+                <p class="subtitle">
+                    A little nostalgia. A whole new world.
+                </p>
 
-  <div class="album-feature">
-    <img id="albumImage" src="" alt="Capa do álbum selecionado">
-    <div>
-      <span id="albumYear">1974</span>
-      <h3 id="albumTitle">A Tábua de Esmeralda</h3>
-      <p id="albumDescription">
-        Explore a discografia de Jorge Ben Jor.
-      </p>
-      <a id="albumLink" class="button" target="_blank">
-        ENCONTRAR ÁLBUM ↗
-      </a>
+                <button class="enter-button" onclick="exploreWorld()">
+                    ENTER MY WORLD →
+                </button>
+
+                <div class="sparkles">✧ ˚ · . ✦ . · ˚ ✧</div>
+
+            </section>
+
+            <!-- MENU -->
+            <nav class="navigation">
+
+                <button onclick="openWindow('summer')">
+                    🌊 SUMMER MODE
+                </button>
+
+                <button onclick="openWindow('music')">
+                    🎧 MY MUSIC
+                </button>
+
+                <button onclick="openWindow('internet')">
+                    💻 INTERNET 2000
+                </button>
+
+                <button onclick="openWindow('chicken')">
+                    🐔 CHICKEN JOE
+                </button>
+
+                <button onclick="openWindow('memories')">
+                    💌 MEMORY BOX
+                </button>
+
+            </nav>
+
+            <!-- ÁREA PRINCIPAL -->
+            <section class="content">
+
+                <div class="welcome-card">
+                    <div class="card-title">♡ MY DIGITAL DIARY ♡</div>
+
+                    <h2>Hey, stranger!</h2>
+
+                    <p>
+                        Bem-vindo ao meu pequeno universo.
+                        Aqui existem músicas, praias, memórias,
+                        histórias e um pouquinho de nostalgia.
+                    </p>
+
+                    <p class="small-text">
+                        Made with love & a little bit of magic ★
+                    </p>
+                </div>
+
+                <div class="music-card">
+
+                    <div class="card-title">♫ NOW PLAYING ♫</div>
+
+                    <div class="album">🎵</div>
+
+                    <h3>Summer Vibes</h3>
+                    <p>My summer playlist ★</p>
+
+                    <div class="music-progress">
+                        <div id="progress"></div>
+                    </div>
+
+                    <button class="play-button" id="playButton"
+                        onclick="toggleMusic()">
+                        ▶ PLAY
+                    </button>
+
+                    <p class="small-text" id="musicStatus">
+                        Press play to start
+                    </p>
+
+                </div>
+
+            </section>
+
+            <!-- JANELAS INTERATIVAS -->
+            <section class="windows-area">
+
+                <div class="window" id="summer">
+                    <div class="window-header">
+                        <span>🌊 SUMMER MODE</span>
+                        <button onclick="closeWindow('summer')">×</button>
+                    </div>
+
+                    <div class="window-content">
+                        <h2>Life is better at the beach!</h2>
+                        <p>Sol, mar, surf e liberdade.</p>
+                        <div class="beach-art">🌴 🏄 🌊 ☀️</div>
+                        <button onclick="surfGame()">SURF CHALLENGE</button>
+                        <p id="surfResult"></p>
+                    </div>
+                </div>
+
+                <div class="window" id="music">
+                    <div class="window-header">
+                        <span>🎧 MY MUSIC</span>
+                        <button onclick="closeWindow('music')">×</button>
+                    </div>
+
+                    <div class="window-content">
+                        <h2>My favorite sounds ♫</h2>
+                        <p>Jorge Ben Jor · Charlie Brown Jr.</p>
+                        <p>Bob Marley · Armandinho</p>
+                        <p>Uma coleção de sons e boas vibrações.</p>
+                        <button onclick="showMusicFact()">DISCOVER A FACT</button>
+                        <p id="musicFact"></p>
+                    </div>
+                </div>
+
+                <div class="window" id="internet">
+                    <div class="window-header">
+                        <span>💻 INTERNET 2000</span>
+                        <button onclick="closeWindow('internet')">×</button>
+                    </div>
+
+                    <div class="window-content">
+                        <h2>Welcome to the old internet!</h2>
+                        <p>Welcome to my homepage ★</p>
+                        <p>Connection: ONLINE</p>
+                        <p>Browser: AFTERSCHOOL EXPLORER</p>
+                        <button onclick="secretMessage()">OPEN SECRET FILE</button>
+                        <p id="secretFile"></p>
+                    </div>
+                </div>
+
+                <div class="window" id="chicken">
+                    <div class="window-header">
+                        <span>🐔 CHICKEN JOE CLUB</span>
+                        <button onclick="closeWindow('chicken')">×</button>
+                    </div>
+
+                    <div class="window-content">
+                        <h2>Hang loose, dude!</h2>
+                        <div class="chicken-art">🐔 🏄 🌊</div>
+                        <p>O espírito surfista nunca morre!</p>
+                        <button onclick="chickenQuote()">GET A SURF QUOTE</button>
+                        <p id="chickenQuote"></p>
+                    </div>
+                </div>
+
+                <div class="window" id="memories">
+                    <div class="window-header">
+                        <span>💌 MEMORY BOX</span>
+                        <button onclick="closeWindow('memories')">×</button>
+                    </div>
+
+                    <div class="window-content">
+                        <h2>Leave a little memory ♡</h2>
+                        <textarea id="memoryInput"
+                            placeholder="Write something special..."></textarea>
+                        <button onclick="saveMemory()">SAVE MEMORY</button>
+                        <div id="memoryList"></div>
+                    </div>
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- RODAPÉ -->
+        <footer>
+            <p>★ AFTERSCHOOL 2000 © 2026 ★</p>
+            <p>BEST VIEWED WITH GOOD VIBES ONLY.</p>
+            <p>Made with ♡ and nostalgia.</p>
+        </footer>
+
     </div>
-  </div>
 
-  <div id="albumGrid" class="album-grid">
-    <p>Carregando capas dos álbuns...</p>
-  </div>
-
-  <p class="small-note">
-    As imagens das capas são obtidas do catálogo público de álbuns.
-    Direitos das artes pertencem aos respectivos titulares.
-  </p>
-</section>
-
-<section class="section music-section" id="musicas">
-  <div class="section-title">
-    <span class="tag">APERTE O PLAY</span>
-    <h2>Qual é o seu<br><em>suingue?</em></h2>
-    <p>Escolha uma música e veja o visual do site mudar!</p>
-  </div>
-
-  <div class="music-layout">
-    <div id="musicList" class="music-list"></div>
-
-    <div class="player">
-      <span>TOCANDO NO SEU UNIVERSO</span>
-      <h3 id="currentMusic">Escolha uma música</h3>
-      <div class="vinyl"><div></div></div>
-      <a id="listenLink" class="button" target="_blank">
-        ENCONTRAR PARA OUVIR ↗
-      </a>
-      <button id="favoriteBtn" class="favorite">
-        ♡ Adicionar aos favoritos
-      </button>
-      <div class="favorites">
-        <h4>♥ Minhas favoritas</h4>
-        <ul id="favoritesList"></ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="quote">
-  <span>✳</span>
-  <h2>Uma história feita de<br><em>ritmo e poesia.</em></h2>
-  <p>Um passeio pela música de um dos grandes nomes da cultura brasileira.</p>
-</section>
-
-<section class="section" id="fotos">
-  <div class="section-title">
-    <span class="tag">MEMÓRIA VISUAL</span>
-    <h2>Galeria de<br><em>momentos.</em></h2>
-    <p>Fotografias de apresentações e registros da trajetória musical.</p>
-  </div>
-
-  <div class="photo-grid">
-    <img
-      src="https://commons.wikimedia.org/wiki/Special:FilePath/BenJorJorge.jpg"
-      alt="Jorge Ben Jor"
-      class="photo-large">
-
-    <img
-      src="https://commons.wikimedia.org/wiki/Special:FilePath/Jorge_Ben_e_o_Trio_Mocot%C3%B3_no_Teatro_da_Lagoa%2C_1971.jpg"
-      alt="Jorge Ben e Trio Mocotó em 1971">
-
-    <img
-      src="https://commons.wikimedia.org/wiki/Special:FilePath/Jorge_benjor_paris.jpg"
-      alt="Jorge Ben Jor em Paris">
-
-    <img
-      src="https://commons.wikimedia.org/wiki/Special:FilePath/Jorge_Ben_Jor_at_Live_Earth.jpg"
-      alt="Jorge Ben Jor no Live Earth">
-  </div>
-
-  <p class="small-note">
-    Fotografias do Wikimedia Commons. Consulte os créditos e as
-    condições de reutilização de cada arquivo antes de republicar.
-    <a href="https://commons.wikimedia.org/wiki/Category:Jorge_Ben_Jor" target="_blank">Ver acervo</a>.
-  </p>
-</section>
-
-<section class="games" id="jogos">
-  <div class="section-title">
-    <span class="tag">HORA DE BRINCAR</span>
-    <h2>Você conhece<br><em>esse som?</em></h2>
-    <p>Pequenos desafios para quem gosta de música.</p>
-  </div>
-
-  <div class="game-grid">
-
-    <article class="game-card">
-      <span>DESAFIO 01</span>
-      <h3>Complete o título</h3>
-      <p>Mas, Que ______!</p>
-
-      <div class="game-options">
-        <button data-word="nada">Nada</button>
-        <button data-word="chuva">Chuva</button>
-        <button data-word="tropical">Tropical</button>
-      </div>
-
-      <p id="wordFeedback" class="feedback"></p>
-    </article>
-
-    <article class="game-card dark">
-      <span>DESAFIO 02</span>
-      <h3>Verdadeiro ou falso?</h3>
-      <p id="truthQuestion">
-        África Brasil foi lançado em 1976.
-      </p>
-
-      <div class="game-options">
-        <button data-truth="true">Verdadeiro</button>
-        <button data-truth="false">Falso</button>
-      </div>
-
-      <p id="truthFeedback" class="feedback"></p>
-      <button id="nextTruth" class="next-button">
-        Próxima afirmação ↗
-      </button>
-    </article>
-
-  </div>
-</section>
-
-<section class="section quiz-section" id="quiz">
-  <div class="section-title">
-    <span class="tag">O GRANDE DESAFIO</span>
-    <h2>Quiz do<br><em>Ben Jor.</em></h2>
-    <p>Responda às perguntas e descubra quantos pontos consegue fazer!</p>
-  </div>
-
-  <div class="quiz-box">
-    <div class="quiz-info">
-      <span id="questionNumber">PERGUNTA 1 DE 8</span>
-      <span id="score">0 PONTOS</span>
+    <!-- SURPRESA -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <h2>YOU FOUND ME! ✨</h2>
+            <p>Somewhere between the past and the future...</p>
+            <p>There is a little magic waiting for you. ♡</p>
+            <button onclick="closePopup()">CLOSE ×</button>
+        </div>
     </div>
 
-    <div class="progress">
-      <div id="progressBar"></div>
-    </div>
-
-    <h3 id="question">Preparado para começar?</h3>
-
-    <div id="answers" class="answers"></div>
-
-    <p id="quizFeedback" class="feedback"></p>
-
-    <button id="nextQuestion" class="button">
-      COMEÇAR QUIZ ↗
-    </button>
-  </div>
-</section>
-
-<section class="share-section">
-  <div>
-    <span class="tag">ESPALHE O SUINGUE</span>
-    <h2>Compartilhe esse<br><em>universo.</em></h2>
-  </div>
-  <button id="shareBtn" class="button">COMPARTILHAR ↗</button>
-</section>
-
-</main>
-
-<footer>
-  <a class="logo" href="#inicio">BEN<span>JOR</span> ✳</a>
-  <p>Um tributo de fã à música e à cultura brasileira.</p>
-  <div>
-    <a href="#inicio">Início</a>
-    <a href="#discos">Álbuns</a>
-    <a href="#quiz">Quiz</a>
-  </div>
-  <small>
-    Projeto não oficial. Marcas, fotografias e músicas pertencem
-    aos seus respectivos titulares.
-  </small>
-</footer>
-
-<div id="lightbox" class="lightbox">
-  <button id="closeLightbox">×</button>
-  <img id="lightboxImage" src="" alt="Foto ampliada">
-</div>
+    <script src="script.js"></script>
 
 </body>
 </html>
